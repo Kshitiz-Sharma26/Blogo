@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include("./partials/header") %>
+    <title>Blogo</title>
+  </head>
+  <body class="bg-light">
+    <%- include("./partials/navbar", {user}) %>
+    <form
+      class="p-4"
+      action="/blog/addblog"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <% if (error) { %>
+      <div class="alert alert-danger" role="alert"><%= error %></div>
+      <% } %>
+      <div class="mb-3">
+        <label for="title" class="form-label"
+          >Title <sup class="text-danger">*</sup></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          placeholder="Title"
+          required
+          maxlength="20"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Cover image</label>
+        <input
+          class="form-control"
+          type="file"
+          id="formFile"
+          name="coverImage"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="body" class="form-label"
+          >Content <sup class="text-danger">*</sup></label
+        >
+        <textarea
+          class="form-control"
+          id="body"
+          name="body"
+          rows="3"
+          placeholder="What's on your mind today?"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add blog</button>
+    </form>
+
+    <%-include("./partials/scripts") %>
+  </body>
+</html>
