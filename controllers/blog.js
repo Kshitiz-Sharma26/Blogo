@@ -45,7 +45,7 @@ export const readBlogHandler = async (req, resp) => {
   let blog;
 
   try {
-    blog = await Blog.findOne({ _id: id });
+    blog = await Blog.findOne({ _id: id }).populate("createdBy");
     comments = await Comment.find({ blog: id }).populate("createdBy");
   } catch (err) {
     error = "Sorry, blog does not exists";

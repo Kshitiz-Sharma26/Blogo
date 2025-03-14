@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
 const blogSchema = new mongoose.Schema(
   {
@@ -12,6 +14,7 @@ const blogSchema = new mongoose.Schema(
     },
     coverImage: {
       type: String,
+      default: process.env.COVER_IMAGE,
     },
     createdBy: {
       type: Schema.Types.ObjectId,

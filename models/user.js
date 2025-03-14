@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
+dotenv.config();
 
 const userSchema = new mongoose.Schema(
   {
@@ -16,8 +18,7 @@ const userSchema = new mongoose.Schema(
     },
     profilePicUrl: {
       type: String,
-      default:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fprofile-svg&psig=AOvVaw3BYscSg_JaP6epweAInM-W&ust=1741591237913000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCKjriL-7_IsDFQAAAAAdAAAAABAE",
+      default: process.env.PROFILE_PIC,
     },
     role: {
       type: String,
